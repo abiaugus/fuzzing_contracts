@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-import './LitVerify.sol';
+import '../LitVerify.sol';
 //incomplete
 contract Test {
     
