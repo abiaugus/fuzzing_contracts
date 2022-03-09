@@ -7,7 +7,7 @@ import './Base64.sol';
 contract Test {
 
     bool flag = true;
-    bool compare_flag = false;
+    bool compare_flag = true;
 
     function test_encode (string memory _str) public {
         bytes memory _bs = bytes(_str);
@@ -44,8 +44,8 @@ contract Test {
         string memory r3 = new string(res_length);
         r2 = test_encode_2(_s);
         r3 = test_encode_3(_s);
-        if((keccak256(abi.encodePacked(r2))) == keccak256(abi.encodePacked(r3))){
-            compare_flag == true;
+        if((keccak256(abi.encodePacked(r2))) != keccak256(abi.encodePacked(r3))){
+            compare_flag = false;
         }
     }
 
@@ -53,7 +53,7 @@ contract Test {
         return flag;
     }
     function echidna_test_compare_encodes() public view returns (bool){
-        return !compare_flag;
+        return compare_flag;
     }
     function echidna_alwaystrue() public returns (bool){
         return(true);
