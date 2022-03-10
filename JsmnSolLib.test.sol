@@ -60,11 +60,19 @@ contract Test {
             parse_bool_flag = JsmnSolLib.parseBool(_a);
         }
     }
-    function test_parseInt(string memory _a, uint _b) public { //works
-        int res1 = JsmnSolLib.parseInt(_a, _b);
-        int res2 = JsmnSolLib.parseInt(_a, _b);
+    function test_parseInt(string memory _a) public { //works
+        int res1 = JsmnSolLib.parseInt(_a);
+        int res4 = JsmnSolLib.parseInt("999");
+        int res2 = JsmnSolLib.parseInt(_a);
+        int res3 = JsmnSolLib.parseInt("1");
 
+        if(res3 != 1){
+            parse_int_flag = false;
+        }
         if(res1 != res2){ //!=
+            parse_int_flag = false;
+        }
+        if(res4 != 999){
             parse_int_flag = false;
         }
     }
@@ -93,7 +101,7 @@ contract Test {
         if((a1 != b1 || a2 != b2)){ 
             parse_flag = false;
         }
-        if( a1 > 3){ // a > 3 . works
+        if( a1 > 3 ){ // a > 3 . works
             parse_flag = false;
         }
     }
